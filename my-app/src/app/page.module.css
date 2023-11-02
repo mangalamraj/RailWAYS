@@ -1,11 +1,9 @@
 .grandParent{
-
   width: 100vw;
   height: 100vh;
 }
 .parent{
   padding-top: 4em;
-  
   justify-content: center;
 }
 
@@ -65,8 +63,7 @@
     border-radius: 2px;
     border: none;
     width: 17%;
-    box-shadow: 1px 1px 3px rgba(0,0,0,.3);
-    
+    box-shadow: 1px 1px 3px rgba(0,0,0,.3);    
 }
 .destinationformParent img{
   margin-right: 1em;
