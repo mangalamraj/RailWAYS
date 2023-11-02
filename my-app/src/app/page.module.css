@@ -1,22 +1,25 @@
 .grandParent{
-  background-color: #FFFBF5;
+
   width: 100vw;
   height: 100vh;
 }
 .parent{
   padding-top: 4em;
-  display: flex;
+  
   justify-content: center;
 }
 
 .parent div{
   
-  font-size: 24px;
+  
   font-weight: 600;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.homeChild{
+  font-size: 24px;
 }
 .parent div p{
   align-items: center;
@@ -29,7 +32,7 @@
     
     background-size: cover;
     background-position: center;
-    position: absolute;
+
     width: 100%;
     height: 550px;
     color: #FFFBF5;
@@ -63,8 +66,21 @@
     border: none;
     width: 17%;
     box-shadow: 1px 1px 3px rgba(0,0,0,.3);
-    position: relative;
+    
 }
 .destinationformParent img{
   margin-right: 1em;
+}
+
+.bannerParent{
+  margin-top: 2em;
+  
+}
+.bannerParent p{
+  font-size: 16px;
+  color: gray;
+  margin-bottom: 2em;
+}
+.bannerWrittenpart{
+  font-size: 18px;
 }

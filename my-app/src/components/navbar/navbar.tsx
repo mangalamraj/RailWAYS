@@ -11,7 +11,7 @@ const Navbar = () =>{
 
             <div className={styles.menuset}>
                 <span className={styles.usernamespan}></span>
-                <Link href="/login" style={{textDecoration:"none", color:"black"}}><div className={styles.loginBut}>Login/Signup</div></Link>
+                <Link href="/login" style={{textDecoration:"none", color:"#EC5B24",fontWeight:"600"}}><div className={styles.loginBut}>Login/Signup</div></Link>
             </div>
             </div>
         </div>
