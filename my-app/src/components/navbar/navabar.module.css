@@ -4,8 +4,11 @@
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
     align-items: center;
+    
+
+
     backdrop-filter: saturate(1) blur(20px)!important;
-    border-bottom: 1px solid #edeef1;  
+    border-bottom: 1px solid #dfdfdf4b;  
 }
 .navbarParent{
     display: flex;
