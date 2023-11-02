@@ -1,0 +1,30 @@
+.navbarGrandParent{
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    align-items: center;
+    backdrop-filter: saturate(1) blur(20px)!important;
+    border-bottom: 1px solid #edeef1;  
+}
+.navbarParent{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: 1em auto;
+    
+}
+
+.navLogo{
+    background-color: #EC5B24;
+    padding: 0.5em;
+    color: white;
+    font-weight:700;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+    display: flex;
+
+}
+.loginBut{
+    margin-top: 0.3em;
+}
