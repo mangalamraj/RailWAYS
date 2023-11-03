@@ -1,0 +1,89 @@
+.grandParent{
+    width: 100vw;
+    height: 100vh;
+  }
+  .parent{
+    padding-top: 4em;
+    justify-content: center;
+  }
+  
+  .parent div{
+    
+    
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .homeChild{
+    font-size: 24px;
+  }
+  .parent div p{
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .homeChild{
+    background-image: url("/images/scene.jpg");
+    transition: opacity 1s ease-in-out;
+      
+      background-size: cover;
+      background-position: center;
+  
+      width: 100%;
+      height: 550px;
+      color: #FFFBF5;
+    
+  }
+  .homeChild p{
+    color: rgb(222, 221, 221);
+  }
+  .destinationformParent{
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 1em;
+    padding: 1em;
+  }
+  .destinationForm{
+    display: flex;
+  }
+  .destinationformParent input{
+    width: 200px;
+    margin-right: 2em;
+    font-size: 16px;
+    border-bottom: 1px solid;
+    border-top: 0px ;
+    border-left: 0px;
+    border-right: 0px;
+    background-color: #FFF;
+  }
+  .destinationformParent button{
+    width: 80px;
+      height:30px;
+      background-color: #EC5B24;
+      color: #FFF;
+      padding: 10px 14px;
+      height: 40px;
+      border-radius: 2px;
+      border: none;
+      width: 17%;
+      box-shadow: 1px 1px 3px rgba(0,0,0,.3);    
+      cursor: pointer;
+  }
+  .destinationformParent img{
+    margin-right: 1em;
+  }
+  
+  .bannerParent{
+    margin-top: 2em;
+    
+  }
+  .bannerParent p{
+    font-size: 16px;
+    color: gray;
+    margin-bottom: 2em;
+  }
+  .bannerWrittenpart{
+    font-size: 18px;
+  }
