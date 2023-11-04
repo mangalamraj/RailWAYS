@@ -1,0 +1,78 @@
+/* CSS for AddProjects Component */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap');
+
+
+
+*{
+    margin:0;
+}
+.container {
+  padding:10%;
+    font-family: 'Poppins',sans-serif;
+    justify-content: center;
+    align-items: center;
+   
+  }
+  .container h1{
+    padding-bottom: 10px;
+    font-size: 2em;
+    font-weight: 500;
+  }
+  .ad-hr{
+    margin-bottom: 40px;
+  }
+  
+  .pj-upload {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+  }
+  .form-group{
+    padding-bottom: 10px;
+  }
+  .form-group label{
+    font-size: 1em;
+    font-weight: 500;
+    padding-bottom: 10px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  input[type="checkbox"],
+  textarea,
+  input[type="date"] {
+    width: 98%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button[type="submit"] {
+    background-color: #f59b78;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #f87a48;
+  }
+  

@@ -21,3 +21,25 @@ model Users {
   createdAt DateTime @default(now())
   updateUT DateTime @updatedAt
 }
+
+model Train {
+  id                  Int      @id @default(autoincrement())
+  train_no            Int      @unique
+  name                String
+  start_destination    String
+  end_destination      String
+  departure_date      DateTime
+  start_time          String
+  end_time            String
+  quota               String
+  seat_1a             Int
+  seat_2a             Int
+  seat_3a             Int
+  seat_sl             Int
+  seat_tatkal_1a      Int
+  seat_tatkal_2a      Int
+  seat_tatkal_3a      Int
+  seat_tatkal_sl      Int
+}
+
+
