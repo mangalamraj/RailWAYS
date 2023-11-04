@@ -1,4 +1,4 @@
-import { db } from "@/app/lib/db";
+import prisma from "@/app/lib/connect";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async(req:NextRequest)=>{
@@ -14,7 +14,7 @@ export const GET = async(req:NextRequest)=>{
         )
     }
 
-    const userData = await db.users.findUnique({
+    const userData = await prisma.users.findUnique({
         where:{
             username:username
         }

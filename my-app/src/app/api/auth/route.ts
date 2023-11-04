@@ -1,4 +1,4 @@
-import { db } from "@/app/lib/db";
+import { db } from "@/app/lib/connect";
 import { NextResponse } from "next/server";
 
 export async function POST(req:Request) {
