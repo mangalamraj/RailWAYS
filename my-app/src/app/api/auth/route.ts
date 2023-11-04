@@ -1,4 +1,4 @@
-import { db } from "@/app/lib/connect";
+import prisma from "@/app/lib/connect";
 import { NextResponse } from "next/server";
 
 export async function POST(req:Request) {
@@ -6,7 +6,7 @@ export async function POST(req:Request) {
         const body = await req.json();
         const {email,password}=body;
 
-        const existingUser = await db.users.findUnique({
+        const existingUser = await prisma.users.findUnique({
             where:{
                 email:email,
             }

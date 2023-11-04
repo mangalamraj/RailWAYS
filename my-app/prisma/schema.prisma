@@ -29,8 +29,8 @@ model Train {
   start_destination    String
   end_destination      String
   departure_date      DateTime
-  start_time          DateTime
-  end_time            DateTime
+  start_time          String
+  end_time            String
   quota               String
   seat_1a             Int
   seat_2a             Int
