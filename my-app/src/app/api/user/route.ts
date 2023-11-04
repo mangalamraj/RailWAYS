@@ -1,11 +1,11 @@
-import { db } from "@/app/lib/db";
+import prisma from "@/app/lib/connect";
 import { NextResponse } from "next/server";
 
 export async function POST(req:Request) {
     try{
         const body = await req.json();
         const {name,username,mobile,email,password,Confirmpassword} = body;
-        const existingUserByEmail = await db.users.findUnique({
+        const existingUserByEmail = await prisma.users.findUnique({
             where:{email:email}
         })
 
@@ -13,7 +13,7 @@ export async function POST(req:Request) {
             return NextResponse.json({users:null,message:"User already exists."},{status:409})
         }
 
-        const newUser = await db.users.create({
+        const newUser = await prisma.users.create({
             data:{
                 name,
                 username,

@@ -5,7 +5,7 @@ services:
     restart: always
     environment:
       POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypass
-      POSTGRES_DB: railWays 
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: railways
     ports:
       - 5432:5432
