@@ -48,7 +48,7 @@ const AddTrains = () => {
     e.preventDefault();
     try {
       const dateOfUploading = new Date(formData.departure_date).toISOString();
-      const response = await fetch('api/getAlltrains', {
+      const response = await fetch('api/gettrains', {
         method: 'POST',
         body: JSON.stringify({
           ...formData,
