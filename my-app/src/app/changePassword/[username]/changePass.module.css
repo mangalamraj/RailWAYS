@@ -1,0 +1,54 @@
+.changeParent{
+  
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1.3px solid rgb(238, 238, 238);
+    width: 400px;
+    margin: 0 auto;
+    margin-top:10em ;
+    padding: 3em 0;
+    box-shadow: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.changeHead{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 0.3em;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1em;
+  
+}
+.changeParent form input{
+    align-items: center;
+    width: 270px;
+    height:30px;
+    margin-bottom: 1.8em;
+    border-right:0px;
+    border-left:0px;
+    border-top: 0px;
+    border-bottom: 1px solid rgb(195, 195, 195);
+    font-size: 16px;
+}
+
+.changeParent form button{
+    width: 200px;
+    height:30px;
+    background-color: #EC5B24;
+    color: #FFF;
+    padding: 10px 14px;
+    height: 40px;
+    border-radius: 2px;
+    border: none;
+    margin-top: 1em;
+    
+    box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+    position: relative;
+    cursor: pointer;
+}

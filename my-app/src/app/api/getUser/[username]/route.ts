@@ -23,7 +23,7 @@ export const GET = async(req:NextRequest)=>{
     if (!userData) {
 
         return new NextResponse(
-          JSON.stringify({ message: 'User not found',username }),
+          JSON.stringify({ message: 'User not found',username, }),
           { status: 404 }
         );
       }
