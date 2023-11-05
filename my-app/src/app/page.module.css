@@ -52,6 +52,11 @@
   width: 200px;
   margin-right: 2em;
   font-size: 16px;
+  border-bottom: 1px solid;
+  border-top: 0px ;
+  border-left: 0px;
+  border-right: 0px;
+  background-color: #FFF;
 }
 .destinationformParent button{
   width: 80px;
