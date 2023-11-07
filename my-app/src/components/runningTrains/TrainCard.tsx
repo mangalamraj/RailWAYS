@@ -3,7 +3,7 @@ import './traincard.css'
 import Link from 'next/link'
 
 interface props{
-
+  
   name:String,
   trainNo:String,
   stDest:String,
@@ -51,7 +51,8 @@ const TrainCard = (props:props) => {
     <div className="ed_t">{props.edTime}</div>
     <div className="ed_w">Sat, 4 Nov</div>
    </div>
-   <div className="tc_bknow" ><Link className="tc_link"href="/addTrains">Book Now</Link></div>
+
+   <div className="tc_bknow" ><Link className="tc_link" href={`/booktrain/[train_no]`} as={`/booktrain/${props.trainNo}`}>Book Now</Link></div>
   </div>
   </div>
 </div>
