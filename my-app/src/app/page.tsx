@@ -1,7 +1,32 @@
+"use client";
 import Image from 'next/image'
 import styles from './page.module.css'
+import React, { useState } from 'react'
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const [from,setfrom] = useState("");
+  const [to,setto] = useState("");
+  const [date,setDate] = useState("");
+  const router = useRouter();
+
+  const handleFromChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
+    setfrom(e.target.value);
+  }
+  const handleToChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
+    setto(e.target.value);
+  }
+  const handleDateChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
+    setDate(e.target.value)
+  }
+
+  const onsubmit = (e:React.ChangeEvent<HTMLFormElement>) =>{
+    e.preventDefault();
+    const fromto = from+to;
+    const destination = fromto.toLowerCase();
+    router.push(`/availabletrains/${destination}`)
+  }
+
   return (
     <div className={styles.grandParent}>
         <div className={styles.parent}>
@@ -9,12 +34,12 @@ export default function Home() {
           <div style={{marginTop: "1em"}}>Train Ticket Booking</div>
           <p>Book Your tain at best price!</p>
           <div className={styles.destinationformParent}>
-            <form className={styles.destinationForm}>  
-            <input type='text' placeholder=' Leaving From'></input>
+            <form className={styles.destinationForm} action="POST" onSubmit={onsubmit}>  
+            <input type='text' placeholder=' Leaving From' onChange={handleFromChange} value={from}></input>
             <div><img src='images/signpost.png' width="30px"></img></div>
-            <input type='text' placeholder=' Leaving To'></input>
-            <input type='date' value="2001-06-26"></input>
-            <button>BOOK!</button>
+            <input type='text' placeholder=' Leaving To' onChange={handleToChange} value={to}></input>
+            <input type='date' value={date}></input>
+            <button type='submit'>BOOK!</button>
             </form>
             
 
