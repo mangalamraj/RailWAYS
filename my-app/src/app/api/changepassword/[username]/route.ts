@@ -1,4 +1,4 @@
-import { db } from "@/app/lib/db";
+import prisma from "@/app/lib/connect";
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
@@ -19,7 +19,7 @@ export async function PUT(req:Request) {
                 }),{status:400}
             )
         }
-        const updatedUser = await db.users.update({
+        const updatedUser = await prisma.users.update({
             where: { username:username },
             data: { password: password }
           });

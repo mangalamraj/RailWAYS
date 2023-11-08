@@ -3,19 +3,20 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
+import citiesData from './lib/cities.json'
 
 export default function Home() {
   const [from,setfrom] = useState("");
   const [to,setto] = useState("");
   const [date,setDate] = useState("");
   const router = useRouter();
-
-  const handleFromChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
+  const handleFromChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setfrom(e.target.value);
-  }
-  const handleToChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
+  };
+  
+  const handleToChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setto(e.target.value);
-  }
+  };
   const handleDateChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
     setDate(e.target.value)
   }
@@ -35,10 +36,32 @@ export default function Home() {
           <p>Book Your tain at best price!</p>
           <div className={styles.destinationformParent}>
             <form className={styles.destinationForm} action="POST" onSubmit={onsubmit}>  
-            <input type='text' placeholder=' Leaving From' onChange={handleFromChange} value={from}></input>
-            <div><img src='images/signpost.png' width="30px"></img></div>
-            <input type='text' placeholder=' Leaving To' onChange={handleToChange} value={to}></input>
-            <input type='date' value={date}></input>
+            <select
+                onChange={handleFromChange}
+                value={from}
+                required
+                className={styles.dropdown}
+              >
+                <option value="">Select Leaving From</option>
+                {citiesData.cities.map((city, index) => (
+                  <option key={index} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </select>
+              <div>
+                <img src="/images/signpost.png" width="30px"></img>
+              </div>
+              {/* Dropdown for "Leaving To" */}
+              <select onChange={handleToChange} value={to} required className={styles.dropdown}>
+                <option  style={{border:'none'}} value="">Select Leaving To</option>
+                {citiesData.cities.map((city, index) => (
+                  <option key={index} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </select>
+              <input type="date" value="2001-06-26" onChange={handleDateChange}></input>
             <button type='submit'>BOOK!</button>
             </form>
             
