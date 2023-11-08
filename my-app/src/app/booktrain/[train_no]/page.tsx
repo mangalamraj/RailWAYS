@@ -23,7 +23,7 @@ type Params ={
 
 
 
-const TrainReservationForm = ({params:{train_no,seat_1a}}:Params) => {
+const TrainReservationForm = ({params:{train_no}}:Params) => {
 
     const [userData, setUserData] = useState<Train | null>(null);
 
@@ -33,7 +33,7 @@ const TrainReservationForm = ({params:{train_no,seat_1a}}:Params) => {
         const data = await getTno(train_no);
         setUserData(data);
       } catch (error) {
-        // Handle error here
+  
         console.error("Error fetching data: ", error);
       }
     };
@@ -71,9 +71,20 @@ const TrainReservationForm = ({params:{train_no,seat_1a}}:Params) => {
   ) => {
     const updatedPassengers = passengers.map((passenger, passengerIndex) => {
       if (passengerIndex === index) {
+        let value: number | string = event.target.value;
+        
+        // Parse input values as integers (phone number and age)
+        if (property === 'passenger_phon' || property === 'passenger_age') {
+          if (value === '') {
+            value = 0; // Set to 0 for empty strings
+          } else {
+            value = parseInt(value, 10);
+          }
+        }
+        
         return {
           ...passenger,
-          [property]: event.target.value,
+          [property]: value,
         };
       }
       return passenger;
@@ -165,16 +176,16 @@ const TrainReservationForm = ({params:{train_no,seat_1a}}:Params) => {
               </select>
             </div>
             <input
-              type="text"
+              type="number"
               placeholder={`Phone Number`}
-              value={passenger.passenger_phon}
+              value={passenger.passenger_phon === 0 ? '' : passenger.passenger_phon} 
               onChange={(e) => handlePassengerChange(e, index, 'passenger_phon')}
             />
 
             <input
               type="number"
               placeholder={`Age`}
-              value={passenger.passenger_age}
+              value={passenger.passenger_age === 0 ? '' : passenger.passenger_age}
               onChange={(e) => handlePassengerChange(e, index, 'passenger_age')}
             />
             <button className="rm_btn" onClick={() => removePassenger(index)}>Remove</button>
