@@ -155,3 +155,18 @@ border-right: 1px dotted black;
     z-index:1;
 
 }
+
+.tc_bknow{
+    margin-left: 55px;
+ margin-top:20px;
+ background-color: #f58c4b;
+ height:25px;
+ padding: 5px 10px;
+ border-radius: 7px;
+ color:white;
+}
+
+.tc_link{
+    color:white;
+    text-decoration: none;
+}

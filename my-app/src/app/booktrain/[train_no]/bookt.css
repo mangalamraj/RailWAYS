@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap');
+
+.bk_main {
+  margin-top: 90px;
+  padding: 0 15%;
+  font-family: 'Poppins', sans-serif;
+}
+
+#passengerDetails {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+#passengerDetails h2 {
+  font-size: 2em;
+  padding-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 97.5%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+}
+
+.rm_btn{
+    background-color: #e85545;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.rm_btn:hover {
+  background-color:  #e8301b;
+}
+.ad_btn{
+    background-color: #e68750;
+  color: #fff;
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.ad_btn:hover {
+  background-color: #e96f29;
+}
+
+#passengerDetails div {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.rm_btn {
+  display: block;
+}
+
+/* Gender and Berth Preferences */
+div.radio-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+}
+
+.radio-group label {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+}
+
+.bk_gen{
+    display: inline;
+    margin-left: 15px;
+    margin-right: 30px;
+   
+}
+
+.bk_tfare{
+    padding: 10px 0;
+    font-size: 1.5em;
+}
+.bk_fare_hr{
+    margin-top: 20px;
+  opacity: 0.5;
+}
+
+.bk_fare_hr2{
+    opacity: 0.5;
+}
+.bk_fbtn{
+    margin-top: 20px;
+    width:100%;
+    padding: 10px;
+    font-size: 1.2em;
+    background-color: #e77837;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.bk_fbtn:hover{
+    opacity:1;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  /* Add responsive styles here if needed */
+}
+
+
