@@ -5,7 +5,7 @@ import './bookt.css';
 
 
 type Train={
-    seat_1a:number
+    seat_3a_price:number
   }
 
 
@@ -14,7 +14,7 @@ type Train={
 type Params ={
     params:{
      train_no:string,
-     seat_1a:number
+     
     }
  }
 
@@ -42,11 +42,11 @@ const TrainReservationForm = ({params:{train_no}}:Params) => {
   }, [train_no]);
 
   const [passengers, setPassengers] = useState<Passenger[]>([
-    { passenger_name: '', passenger_gender: 'male', passenger_berth: 'lower', passenger_phon: 0, passenger_age: 0,passenger_status:'scheduled' },
+    { passenger_name: '', passenger_gender: 'male', passenger_berth: 'lower', passenger_phon: 0, passenger_age: 0,passenger_status:'scheduled',passenger_class: '1A' },
   ]);
 
   const addPassenger = () => {
-    setPassengers([...passengers, { passenger_name: '', passenger_gender: 'male', passenger_berth: 'lower', passenger_phon: 0, passenger_age: 0,passenger_status:'scheduled' }]);
+    setPassengers([...passengers, { passenger_name: '', passenger_gender: 'male', passenger_berth: 'lower', passenger_phon: 0, passenger_age: 0,passenger_status:'scheduled',passenger_class:'1A' }]);
   };
 
   const removePassenger = (index: number) => {
@@ -56,8 +56,8 @@ const TrainReservationForm = ({params:{train_no}}:Params) => {
   };
 
   const calculateTotalFare = (): number => {
-    if (userData && typeof userData.seat_1a === 'number') {
-        const baseFare = userData.seat_1a;
+    if (userData && typeof userData.seat_3a_price === 'number') {
+        const baseFare = userData.seat_3a_price;
         return baseFare * passengers.length;
       }
       // Handle the case where seat_1a is not available or not a number
@@ -188,6 +188,19 @@ const TrainReservationForm = ({params:{train_no}}:Params) => {
               value={passenger.passenger_age === 0 ? '' : passenger.passenger_age}
               onChange={(e) => handlePassengerChange(e, index, 'passenger_age')}
             />
+            <div>
+              <label>Class:</label>
+              <select
+                value={passenger.passenger_class}
+                onChange={(e) => handlePassengerChange(e, index, 'passenger_class')}
+              >
+                <option value="1A">1A</option>
+                <option value="2A">2A</option>
+                <option value="3A">3A</option>
+                <option value="Sleeper">Sleeper</option>
+                <option value="SecondClass">Second Class</option>
+              </select>
+            </div>
             <button className="rm_btn" onClick={() => removePassenger(index)}>Remove</button>
           </div>
         ))}
@@ -207,10 +220,11 @@ interface Passenger {
   passenger_name: string;
   passenger_phon: number,
   passenger_age:number,
-
+ 
   passenger_gender: 'male' | 'female';
   passenger_berth: 'lower' | 'upper' | 'middle' | 'sidelower' | 'sideupper';
-  passenger_status: string;
+  passenger_status: string,
+  passenger_class:string,
 }
 
 export default TrainReservationForm;
