@@ -54,7 +54,7 @@ export default function Home() {
               </div>
               {/* Dropdown for "Leaving To" */}
               <select onChange={handleToChange} value={to} required className={styles.dropdown}>
-                <option   >Select Leaving To</option>
+gi                <option   >Select Leaving To</option>
                 {citiesData.cities.map((city, index) => (
                   <option key={index} value={city}>
                     {city}

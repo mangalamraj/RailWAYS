@@ -28,7 +28,9 @@ model Train {
   name                String
   start_destination    String
   end_destination      String
+  main_destination      String
   departure_date      DateTime
+  arrival_date        DateTime
   start_time          String
   end_time            String
   quota               String
@@ -36,10 +38,18 @@ model Train {
   seat_2a             Int
   seat_3a             Int
   seat_sl             Int
+  seat_1a_price       Int
+  seat_2a_price       Int
+  seat_3a_price       Int
+  seat_sl_price       Int
   seat_tatkal_1a      Int
   seat_tatkal_2a      Int
   seat_tatkal_3a      Int
   seat_tatkal_sl      Int
+  seat_tatkal_1a_price      Int
+  seat_tatkal_2a_price      Int
+  seat_tatkal_3a_price      Int
+  seat_tatkal_sl_price      Int
 }
 
 model Booking {
