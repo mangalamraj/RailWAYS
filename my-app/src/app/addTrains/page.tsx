@@ -9,7 +9,9 @@ const AddTrains = () => {
     name: '',
     start_destination: '',
     end_destination: '',
+    main_destination: '',
     departure_date: '',
+    arrival_date: '',
     start_time: '',
     end_time: '',
     quota:'normal',
@@ -17,10 +19,18 @@ const AddTrains = () => {
     seat_2a: '',
     seat_3a: '',
     seat_sl: '',
+    seat_1a_price: '',
+    seat_2a_price: '',
+    seat_3a_price: '',
+    seat_sl_price: '',
     seat_tatkal_1a: '',
     seat_tatkal_2a: '',
     seat_tatkal_3a: '',
     seat_tatkal_sl: '',
+    seat_tatkal_1a_price: '',
+    seat_tatkal_2a_price: '',
+    seat_tatkal_3a_price: '',
+    seat_tatkal_sl_price: ''
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -28,9 +38,10 @@ const AddTrains = () => {
     let updatedValue: string | number | Date;
   
  
-     if (name === 'train_no'||name=== 'seat_1a'||name=== 'seat_2a'||name=== 'seat_3a'||name=== 'seat_sl'||name=== 'seat_tatkal_1a'||name=== 'seat_tatkal_2a'||name=== 'seat_tatkal_3a'||name=== 'seat_tatkal_sl') {
+     if (name === 'train_no'||name=== 'seat_1a'||name=== 'seat_2a'||name=== 'seat_3a'||name=== 'seat_sl'||name=== 'seat_tatkal_1a'||name=== 'seat_tatkal_2a'||name=== 'seat_tatkal_3a'||name=== 'seat_tatkal_sl'||name=== 'seat_1a_price'||name=== 'seat_2a_price'||name=== 'seat_3a_price'||name=== 'seat_sl_price'||name=== 'seat_tatkal_1a_price'||name=== 'seat_tatkal_2a_price'||name=== 'seat_tatkal_3a_price'||name=== 'seat_tatkal_sl_price') {
       updatedValue = parseInt(value, 10);
-    } else {
+    }
+     else {
       updatedValue = value;
     }
   
@@ -47,12 +58,17 @@ const AddTrains = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const dateOfUploading = new Date(formData.departure_date).toISOString();
+      const dateOfDeparture = new Date(formData.departure_date).toISOString();
+      const dateOfArrival = new Date(formData.arrival_date).toISOString();
+      const stDest= formData.start_destination;
+      const edDest = formData.end_destination;
       const response = await fetch('api/gettrains', {
         method: 'POST',
         body: JSON.stringify({
           ...formData,
-          departure_date: dateOfUploading,
+          departure_date: dateOfDeparture,
+          arrival_date: dateOfArrival,
+          main_destination:(stDest+edDest).toLowerCase()
         }),
       });
 
@@ -124,6 +140,17 @@ const AddTrains = () => {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="arrival _date">Arrival Date:</label>
+          <input
+            type="date"
+            id="arrival_date"
+            name="arrival_date"
+            value={formData.arrival_date}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
   <label htmlFor="start_time">Start Time (HH:mm):</label>
   <input
     type="text"
@@ -160,12 +187,34 @@ const AddTrains = () => {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="seat_1a_price"> Seat 1A Price : </label>
+          <input
+            type="text"
+            id="seat_1a_price"
+            name="seat_1a_price"
+            value={formData.seat_1a_price}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="seat_2a"> Seat 2A : </label>
           <input
             type="text"
             id="seat_2a"
             name="seat_2a"
             value={formData.seat_2a}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="seat_2a_price"> Seat 2A Price: </label>
+          <input
+            type="text"
+            id="seat_2a_price"
+            name="seat_2a_price"
+            value={formData.seat_2a_price}
             onChange={handleChange}
             required
           />
@@ -182,12 +231,34 @@ const AddTrains = () => {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="seat_3a_price"> Seat 3A Price: </label>
+          <input
+            type="text"
+            id="seat_3a_price"
+            name="seat_3a_price"
+            value={formData.seat_3a_price}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="seat_sl">Sleeper : </label>
           <input
             type="text"
             id="seat_sl"
             name="seat_sl"
             value={formData.seat_sl}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="seat_sl_price">Sleeper Price: </label>
+          <input
+            type="text"
+            id="seat_sl_price"
+            name="seat_sl_price"
+            value={formData.seat_sl_price}
             onChange={handleChange}
             required
           />
@@ -204,12 +275,34 @@ const AddTrains = () => {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="seat_tatkal_1a_price">Tatkal 1A Price:</label>
+          <input
+            type="text"
+            id="seat_tatkal_1a_price"
+            name="seat_tatkal_1a_price"
+            value={formData.seat_tatkal_1a_price}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="seat_tatkal_2a">Tatkal 2A:</label>
           <input
             type="text"
             id="seat_tatkal_2a"
             name="seat_tatkal_2a"
             value={formData.seat_tatkal_2a}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="seat_tatkal_2a_price">Tatkal 2A Price:</label>
+          <input
+            type="text"
+            id="seat_tatkal_2a_price"
+            name="seat_tatkal_2a_price"
+            value={formData.seat_tatkal_2a_price}
             onChange={handleChange}
             required
           />
@@ -226,12 +319,34 @@ const AddTrains = () => {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="seat_tatkal_3a_price">Tatkal 3A Price:</label>
+          <input
+            type="text"
+            id="seat_tatkal_3a_price"
+            name="seat_tatkal_3a_price"
+            value={formData.seat_tatkal_3a_price}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="seat_tatkal_sl">Tatkal Sleeper:</label>
           <input
             type="text"
             id="seat_tatkal_sl"
             name="seat_tatkal_sl"
             value={formData.seat_tatkal_sl}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="seat_tatkal_sl_price">Tatkal Sleeper Price:</label>
+          <input
+            type="text"
+            id="seat_tatkal_sl_price"
+            name="seat_tatkal_sl_price"
+            value={formData.seat_tatkal_sl_price}
             onChange={handleChange}
             required
           />

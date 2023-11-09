@@ -1,8 +1,9 @@
 "use client"
+import getTrainsdest from '@/app/lib/getTrainsdest';
 import TrainCard from '@/components/runningTrains/TrainCard'
 import React, { useEffect, useState } from 'react'
-import getTrains from '../lib/getTrains';
-import './searchtrains.css'
+
+import './availabletrains.css'
 
 type Trains = {
   name: string;
@@ -21,17 +22,24 @@ type Trains = {
   seat_tatkal_sl: string;
 }
 
-const SearchTrains = () => {
+type Params ={
+  params:{
+   main_destination:string,
+
+  }
+}
+
+const SearchTrains = ({params:{main_destination}}:Params) => {
   const [trainData, setTrainData] = useState<Trains[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getTrains();
+      const data = await getTrainsdest(main_destination);
       setTrainData(data);
     };
 
     fetchData();
-  }, []);
+  }, [main_destination]);
 
   return (
     <div className="st_main">
