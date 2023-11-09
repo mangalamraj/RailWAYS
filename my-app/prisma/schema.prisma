@@ -36,18 +36,10 @@ model Train {
   seat_2a             Int
   seat_3a             Int
   seat_sl             Int
-  seat_1a_price       Int
-  seat_2a_price       Int
-  seat_3a_price       Int
-  seat_sl_price       Int
   seat_tatkal_1a      Int
   seat_tatkal_2a      Int
   seat_tatkal_3a      Int
   seat_tatkal_sl      Int
-  seat_tatkal_1a_price      Int
-  seat_tatkal_2a_price      Int
-  seat_tatkal_3a_price      Int
-  seat_tatkal_sl_price      Int
 }
 
 model Booking {
