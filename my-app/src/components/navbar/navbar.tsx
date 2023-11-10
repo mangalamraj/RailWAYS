@@ -35,6 +35,9 @@ const Navbar = () =>{
     const dashboardRedirect = () =>{
         router.push(`/dashboard/${username}`)
     }
+    const adminDashboard = () =>{
+        router.push('/admin');
+    }
 
     return(
         <div className={styles.navbarGrandParent}>
@@ -46,9 +49,9 @@ const Navbar = () =>{
             </div></Link>
 
             <div className={styles.menuset}>
-
+            {user?.username=="admin"?<span style={{textDecoration:"none", color:"#EC5B24",fontWeight:"600",alignItems:"center"}}>{user?<div onClick={adminDashboard} style={{cursor:"pointer"}}>Hi! {user.username}</div>:  <Link href="/login" style={{textDecoration:"none", color:"#EC5B24",fontWeight:"600"}}>Login/Signup</Link> }</span>:
               <span style={{textDecoration:"none", color:"#EC5B24",fontWeight:"600",alignItems:"center"}}>{user?<div onClick={dashboardRedirect} style={{cursor:"pointer"}}>Hi! {user.username}</div>:  <Link href="/login" style={{textDecoration:"none", color:"#EC5B24",fontWeight:"600"}}>Login/Signup</Link> }</span>
-                
+                }   
             </div>
             </div>
         </div>
