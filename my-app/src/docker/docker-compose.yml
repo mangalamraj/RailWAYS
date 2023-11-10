@@ -4,8 +4,8 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_USER: env("DB_USER")
+      POSTGRES_PASSWORD: env("DB_PASS")
       POSTGRES_DB: railways
     ports:
       - 5432:5432
