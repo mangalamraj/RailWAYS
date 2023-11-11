@@ -1,13 +1,27 @@
 import styles from "./bookingcard.module.css"
 
-const BookingCard = () =>{
+interface props{
+  
+psgName:String,
+psgPhone:number,
+psgClass:String,
+psgSeat:String
+    
+  }
+
+
+
+
+
+
+const BookingCard = (props:props) =>{
     return(
         <div className={styles.bookingGrand}>
             <div className={styles.bookingParent}>
                 <div className={styles.abouttrain}>
                     <div className={styles.namesSet}>
                     <div className={styles.trainName}>Mango Express</div>
-                    <div className={styles.passengerName}>Mangalam Raj</div>
+                    <div className={styles.passengerName}>12234</div>
                     </div>
                     <div className={styles.statusCheck}>
                         <div className={styles.tainStatus}>Scheduled</div>
@@ -37,19 +51,19 @@ const BookingCard = () =>{
                         <div className={styles.PassengerThings}>
                         <div className={styles.passengerDetails}>
                             <div className={styles.passengerHead}>PASSENGER</div>
-                            <div className={styles.passengername}>MR MANGALAM RAJ</div>
+                            <div className={styles.passengername}>MR {props.psgName}</div>
                         </div>
                         <div className={styles.passengerPhoneDetail}>
                             <div className={styles.passengerPhone}>PHONE</div>
-                            <div className={styles.passengername}>9430591530</div>
+                            <div className={styles.passengername}>{props.psgPhone}</div>
                         </div>
                         <div className={styles.passengerPhoneDetail}>
                             <div className={styles.passengerBogie}>BOGIE</div>
-                            <div className={styles.passengername}>A2</div>
+                            <div className={styles.passengername}>{props.psgClass}</div>
                         </div>
                         <div className={styles.passengerSeatDetails}>
                             <div className={styles.passengerBogie}>SEAT</div>
-                            <div className={styles.passengername}>12</div>
+                            <div className={styles.passengername}>{props.psgSeat}</div>
                         </div>
                         </div>
                        

@@ -43,6 +43,7 @@ const SearchTrains = ({params:{main_destination}}:Params) => {
 
   return (
     <div className="st_main">
+      <div className="avl_trains">
       {trainData.map((category, index) => (
         <div className="tc-sub-user" key={index}>
           <TrainCard
@@ -63,7 +64,11 @@ const SearchTrains = ({params:{main_destination}}:Params) => {
           />
         </div>
       ))}
+
     </div>
+    <div className="filtering">MORE FILTERS</div>
+</div>
+
   );
 }
 

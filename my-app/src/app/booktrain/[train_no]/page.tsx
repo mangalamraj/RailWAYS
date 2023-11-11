@@ -124,10 +124,6 @@ const TrainReservationForm = ({params:{train_no}}:Params) => {
     }
   };
 
-
-
-
-
   return (
     <div className="bk_main">
 
@@ -220,7 +216,6 @@ interface Passenger {
   passenger_name: string;
   passenger_phon: number,
   passenger_age:number,
- 
   passenger_gender: 'male' | 'female';
   passenger_berth: 'lower' | 'upper' | 'middle' | 'sidelower' | 'sideupper';
   passenger_status: string,
