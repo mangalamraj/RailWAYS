@@ -5,7 +5,7 @@
     margin: 20px 10px;
     box-shadow: 0 0 10px rgba(0,0,0,.3);
     background: #fff;
-    width:65%;
+    width:100%;
     padding: 20px;
     font-family: 'Poppins', sans-serif;
     display: flex;
@@ -162,6 +162,7 @@ border-right: 1px dotted black;
  background-color: #f58c4b;
  height:25px;
  padding: 5px 10px;
+ display: flex;
  border-radius: 7px;
  color:white;
 }
@@ -169,4 +170,7 @@ border-right: 1px dotted black;
 .tc_link{
     color:white;
     text-decoration: none;
+    background-color: #f58c4b;
+    border: 0px;
+    cursor: pointer;
 }
