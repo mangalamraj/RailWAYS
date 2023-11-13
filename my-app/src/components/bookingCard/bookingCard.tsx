@@ -25,7 +25,7 @@ const BookingCard = (props:props) =>{
                     </div>
                     <div className={styles.statusCheck}>
                         <div className={styles.tainStatus}>Scheduled</div>
-                        <div className={styles.cancelTicket}>Cancel</div>
+                        <div className={styles.cancelTicket}><button>Cancel</button></div>
                     </div>
                   </div>  
                     <div className={styles.divider}></div>

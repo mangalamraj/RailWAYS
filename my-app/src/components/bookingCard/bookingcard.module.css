@@ -1,4 +1,4 @@
-.bookingParent{
+d.bookingParent{
     margin-top: 1em;
     border: 1.3px solid rgb(238, 238, 238);
     padding: 2em;
@@ -17,8 +17,16 @@
     border-radius: 5px;
     color: white;
 }
-.cancelTicket{
-    color: red;
+.cancelTicket button{
+    
+    background-color: rgb(240, 91, 91);
+    border:none;
+    padding:5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 1em;
+    cursor:pointer;
+
 }
 .abouttrain{
     display: flex;
