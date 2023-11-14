@@ -1,4 +1,9 @@
 .ad_main{
     padding-top: 80px;
-    padding-left: 30px;
+    
+    
+}
+.tc-sub-user{
+    display: flex;
+    flex-direction: column;
 }

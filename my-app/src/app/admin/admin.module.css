@@ -1,0 +1,37 @@
+.adminfather{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    align-items: center;
+    margin: 0 auto;
+}
+.RunningHead{
+    font-size: 20px;
+    font-weight: 600;
+}
+.addTrains{
+    
+    display: flex;
+    border-radius: 5px;
+    border: 1.3px solid rgb(218, 218, 218);
+    text-decoration: none;
+    color: #000;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.addTrains img{
+    padding-left: 0.6em;
+}
+.add{
+    padding: 0.6em;
+}
+.train_set{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
