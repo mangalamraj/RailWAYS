@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap');
+
 .dashboardParent{
     margin: 5em;
-    
+    font-family: 'Poppins', sans-serif;
 }
 .aboutSection{
     background-image: linear-gradient(273deg,#ad2e41,#721053);
     
+}
+.bk_sub_user{
+    margin-bottom: 5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
 }
 .aboutSection div{
     color: white;
@@ -15,6 +22,12 @@
     width: -o-calc(100% - 140px);
     width: -webkit-calc(100% - 140px);
     width: calc(100% - 140px);
+}
+.bking_head{
+    margin-bottom: 2em;
+    padding-top: 1em;
+    font-size: 2em;
+    text-transform: uppercase;
 }
 .aboutSectionParent div{
     color: #fff;

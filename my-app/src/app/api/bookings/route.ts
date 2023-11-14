@@ -66,6 +66,45 @@ export const POST = async (req: NextRequest) => {
       );
     }
   };
+
+
+  export const PUT = async (req: NextRequest) => {
+    try {
+      // Validate and extract data from the request body
+      const body = await req.text();
+
+
+      const requestBody = JSON.parse(body);
+  
+      // Ensure a valid Prisma instance is available
+      const updatedPassenger = await prisma.passenger.update({
+        where: {
+          id: requestBody.id,
+        },
+        data: {
+          passengerStatus: 'cancelled',
+        },
+      });
+  
+      // Return a successful response with the updated passenger data
+      return new NextResponse(JSON.stringify(updatedPassenger), { status: 200 });
+    } catch (err) {
+      // Log detailed error information for debugging
+      console.error('Error updating passenger status:', err);
+  
+      // Return an error response with a generic error message
+      return new NextResponse(
+        JSON.stringify({ message: 'Failed to update passenger status' }),
+        { status: 500 }
+      );
+    }
+  };
+
+  
+  
+  
+  
+  
   
 
 

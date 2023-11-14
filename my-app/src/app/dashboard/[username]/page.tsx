@@ -15,13 +15,47 @@ interface UserData {
 interface PassengerData {
     passengerName :  string,
     passengerPhone : number,
-    passengerClass :  string
-    passengerSeat :  '14'
+    passengerClass :  string,
+    passengerSeat :  '14',
+    passengerStatus:string
+    id:number
 }
 
 
 
 const Dashboard = () =>{
+
+    const handleCancelBooking = async (id: number) => {
+        try {
+          const response = await fetch('/api/bookings', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id }),
+          });
+    
+          if (!response.ok) {
+            console.log('Error updating passenger status');
+            return;
+          }
+    
+          // Update the local state after a successful update
+          setPassenger((prevPassengers) =>
+            prevPassengers.map((passenger) =>
+              passenger.id === id
+                ? { ...passenger, passengerStatus: 'cancelled' }
+                : passenger
+            )
+          );
+    
+          console.log('Passenger status updated successfully');
+        } catch (error) {
+          console.error('Error updating passenger status:', error);
+        }
+      };
+    
+
     const pathname = usePathname();
     const username = pathname.split("/").pop();
     const [user,setUser] = useState<UserData | null>(null);
@@ -63,7 +97,7 @@ const Dashboard = () =>{
                 }
 
                 const passengerData = await response.json();
-                console.log(passengerData);
+            
                 setPassenger(passengerData);
  
               
@@ -91,16 +125,23 @@ const Dashboard = () =>{
 
                 </div>
                 <div>
-                    <h2>Your Bookings</h2>
+                    <h2 className ={styles.bking_head}>Your Bookings - </h2>
 
                     {passenger.length > 0 ? (
                         passenger.map((category, index) => (
-                            <div className="tc-sub-user" key={index}>
+                            <div className={styles.bk_sub_user} key={index}>
+                                  
                                 <BookingCard
+                                 psgId={category.id}
+                                psgStatus={category.passengerStatus}
                                     psgName={category.passengerName}
                                     psgPhone={category.passengerPhone}
                                     psgClass={category.passengerClass}
                                     psgSeat={category.passengerSeat} 
+                                                 onCancel={() => handleCancelBooking(category.id)} // Pass the cancellation function
+
+
+                                    
                                 />
                             </div>
                         ))

@@ -9,10 +9,18 @@ d.bookingParent{
 .statusCheck{
     text-align: right;
 }
-.tainStatus{
+.cancelledStatus {
+    background-color: red;
+    color:white;
+    padding: 0.3em 0.5em;
+
+    border-radius: 5px;
+
+  }
+.trainStatus{
     text-align: center;
     background-color: lightgreen;
-    padding: 0.2em;
+    padding: 0.3em 0.5em;
     margin-bottom: 0.4em;
     border-radius: 5px;
     color: white;
