@@ -64,6 +64,7 @@ model Passenger {
   passengerName   String
   passengerPhone  Int
   passengerAge    Int
+  passengerClass  String
   passengerGender String
   passengerBerth  String
   passengerStatus String

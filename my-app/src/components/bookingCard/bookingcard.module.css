@@ -1,4 +1,4 @@
-.bookingParent{
+d.bookingParent{
     margin-top: 1em;
     border: 1.3px solid rgb(238, 238, 238);
     padding: 2em;
@@ -9,16 +9,32 @@
 .statusCheck{
     text-align: right;
 }
-.tainStatus{
+.cancelledStatus {
+    background-color: red;
+    color:white;
+    padding: 0.3em 0.5em;
+
+    border-radius: 5px;
+
+  }
+.trainStatus{
     text-align: center;
     background-color: lightgreen;
-    padding: 0.2em;
+    padding: 0.3em 0.5em;
     margin-bottom: 0.4em;
     border-radius: 5px;
     color: white;
 }
-.cancelTicket{
-    color: red;
+.cancelTicket button{
+    
+    background-color: rgb(240, 91, 91);
+    border:none;
+    padding:5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 1em;
+    cursor:pointer;
+
 }
 .abouttrain{
     display: flex;
