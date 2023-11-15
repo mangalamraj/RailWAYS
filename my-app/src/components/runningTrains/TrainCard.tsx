@@ -23,6 +23,7 @@ interface props{
 
 
 
+
 const TrainCard = (props:props) => {
   return (
     <div className="tc_main">

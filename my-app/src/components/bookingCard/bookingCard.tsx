@@ -1,7 +1,12 @@
 import styles from "./bookingcard.module.css"
 
 interface props{
-  
+  trainName: String;
+trainNumber:String,
+trainDepartureTime:String,
+trainArrivalTime:String,
+trainStartDestination:String,
+trainEndDestination:String,
 psgName:String,
 psgPhone:number,
 psgClass:String,
@@ -63,7 +68,7 @@ const BookingCard = (props:props) =>{
             <div className={styles.bookingParent}>
                 <div className={styles.abouttrain}>
                     <div className={styles.namesSet}>
-                    <div className={styles.trainName}>Mango Express</div>
+                    <div className={styles.trainName}>abcd</div>
                     <div className={styles.passengerName}>12234</div>
                     </div>
                     <div className={styles.statusCheck}>
@@ -83,9 +88,9 @@ const BookingCard = (props:props) =>{
                     <div className={styles.AboutandTimings}>
                         <div className={styles.departureSection}>
                         <div className={styles.headings}>DEPARTURE</div>
-                        <div className={styles.placeName}>NAG-07:10</div>
+                        <div className={styles.placeName}>7:45 AM</div>
                         <div className={styles.depDate}>Wed, 06 Dec</div>
-                        <div className={styles.depPlaceName}>NAGPUR</div>
+                        <div className={styles.depPlaceName}>Patna</div>
                         </div>
                         <div className={styles.durationSection}>
                         <div className={styles.headings}>DURATION</div>
@@ -93,9 +98,9 @@ const BookingCard = (props:props) =>{
                         </div>
                         <div className={styles.arrivalSection}>
                         <div className={styles.headings}>ARRIVAL</div>
-                        <div className={styles.placeName}>PAT-05:10</div>
+                        <div className={styles.placeName}>8:00 AM</div>
                         <div className={styles.depDate}>THU, 07 Dec</div>
-                        <div className={styles.depPlaceName}>PATNA</div>
+                        <div className={styles.depPlaceName}>Nagpur/</div>
                         </div>
                     </div>
                     <div className={styles.divider}></div>
