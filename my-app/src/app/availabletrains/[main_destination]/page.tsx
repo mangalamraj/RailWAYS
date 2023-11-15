@@ -66,7 +66,7 @@ const SearchTrains = ({params:{main_destination}}:Params) => {
       ))}
 
     </div>
-    <div className="filtering">MORE FILTERS</div>
+    
 </div>
 
   );
