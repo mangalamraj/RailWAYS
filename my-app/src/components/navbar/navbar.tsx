@@ -38,24 +38,53 @@ const Navbar = () =>{
     const adminDashboard = () =>{
         router.push('/admin');
     }
+    const reload = () =>{
+        router.push("/");
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
+        
+    }
 
-    return(
+    return (
         <div className={styles.navbarGrandParent}>
             <div className={styles.navbarParent}>
-                
-            <Link href="/" style={{textDecoration:"none"}}>
-                <div className={styles.navLogo}>
-                <div>Rail</div><p>WAYS</p>
-            </div></Link>
+                <Link href="/" style={{ textDecoration: "none" }}>
+                    <div className={styles.navLogo}>
+                        <div>Rail</div>
+                        <p>WAYS</p>
+                    </div>
+                </Link>
 
-            <div className={styles.menuset}>
-            {user?.username=="admin"?<span style={{textDecoration:"none", color:"#EC5B24",fontWeight:"600",alignItems:"center"}}>{user?<div onClick={adminDashboard} style={{cursor:"pointer"}}>Hi! {user.username}</div>:  <Link href="/login" style={{textDecoration:"none", color:"#EC5B24",fontWeight:"600"}}>Login/Signup</Link> }</span>:
-              <span style={{textDecoration:"none", color:"#EC5B24",fontWeight:"600",alignItems:"center"}}>{user?<div onClick={dashboardRedirect} style={{cursor:"pointer"}}>Hi! {user.username}</div>:  <Link href="/login" style={{textDecoration:"none", color:"#EC5B24",fontWeight:"600"}}>Login/Signup</Link> }</span>
-                }   
-            </div>
+                <div className={styles.menuset} style={{ display: "flex", gap: "1em" }}>
+                    {user?.username === "admin" ? (
+                        <span style={{ textDecoration: "none", color: "#EC5B24", fontWeight: "600", alignItems: "center" }}>
+                            {user && user.username ? (
+                                <div onClick={adminDashboard} style={{ cursor: "pointer" }}>Hi! {user.username}</div>
+                            ) : (
+                                <Link href="/login" style={{ textDecoration: "none", color: "#EC5B24", fontWeight: "600" }}>Login/Signup</Link>
+                            )}
+                        </span>
+                    ) : (
+                        <span style={{ textDecoration: "none", color: "#EC5B24", fontWeight: "600", alignItems: "center" }}>
+                            {user && user.username ? (
+                                <div onClick={dashboardRedirect} style={{ cursor: "pointer" }}>Hi! {user.username}</div>
+                            ) : (
+                                <Link href="/login" style={{ textDecoration: "none", color: "#EC5B24", fontWeight: "600" }}>Login/Signup</Link>
+                            )}
+                        </span>
+                    )}
+                    {user && user.username ? (
+                        <span>
+                            <div onClick={reload} style={{ textDecoration: "none", color: "#EC5B24", fontWeight: "600", cursor: "pointer" }}>Logout</div>
+                        </span>
+                    ) : (
+                        <span></span>
+                    )}
+                </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Navbar;
