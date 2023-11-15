@@ -10,6 +10,28 @@ interface UserData {
     email: string
 }
 
+interface BookingData {
+   id:number,
+   trainNo:string
+}
+
+interface TrainData {
+    name: string;
+    train_no: string;
+    start_destination: string;
+    end_destination: string;
+    start_time: string;
+    end_time: string;
+    seat_1a: string;
+    seat_2a: string;
+    seat_3a: string;
+    seat_sl: string;
+    seat_tatkal_1a: string;
+    seat_tatkal_2a: string;
+    seat_tatkal_3a: string;
+    seat_tatkal_sl: string;
+ }
+
 
 
 interface PassengerData {
@@ -17,8 +39,10 @@ interface PassengerData {
     passengerPhone : number,
     passengerClass :  string,
     passengerSeat :  '14',
-    passengerStatus:string
-    id:number
+    passengerStatus:string,
+    trainReservationId:number,
+    id:number,
+    trainData: TrainData
 }
 
 
@@ -59,7 +83,9 @@ const Dashboard = () =>{
     const pathname = usePathname();
     const username = pathname.split("/").pop();
     const [user,setUser] = useState<UserData | null>(null);
-
+    const [bkingData,setbkingData] = useState<BookingData | null>(null);
+    const [trainData,settrainData] = useState<TrainData | null>(null);
+  
     const [passenger, setPassenger] = useState<PassengerData[]>([]);
     useEffect(()=>{
         const fetchdata=async()=>{
@@ -109,6 +135,68 @@ const Dashboard = () =>{
         fetchPassengerData();
     }, [user?.mobile])
 
+    useEffect(() => {
+        const fetchBookingData = async () => {
+            try {
+              
+                if (!passenger[0]?.trainReservationId) {
+                    console.log("User train reservation id is missing or invalid");
+                    return;
+                }
+    
+               
+
+                const response = await fetch(`/api/userbkings/id?id=${passenger[0]?.trainReservationId}`);
+                if (!response.ok) {
+                    console.log("Error fetching passenger data");
+                    return;
+                }
+
+                const bookingData = await response.json();
+            
+                setbkingData(bookingData);
+ 
+              
+            } catch (e) {
+                console.log("Error while fetching booking data", e);
+            }
+        };
+
+        fetchBookingData();
+    }, [passenger[0]?.trainReservationId])
+
+
+    useEffect(() => {
+        const fetchTrainData = async () => {
+            try {
+              
+                if (!bkingData?.trainNo) {
+                    console.log("User train number is missing or invalid");
+                    return;
+                }
+    
+               
+
+                const response = await fetch(`/api/train/train_no?train_no=${bkingData?.trainNo}`);
+                if (!response.ok) {
+                    console.log("Error fetching train data");
+                    return;
+                }
+
+                const trainData = await response.json();
+            
+                settrainData(trainData);
+ 
+              
+            } catch (e) {
+                console.log("Error while fetching booking data", e);
+            }
+        };
+
+        fetchTrainData();
+    }, [bkingData?.trainNo])
+   
+
 
 
     return(
@@ -126,12 +214,21 @@ const Dashboard = () =>{
                 </div>
                 <div>
                     <h2 className ={styles.bking_head}>Your Bookings - </h2>
-
+  
                     {passenger.length > 0 ? (
+                        
                         passenger.map((category, index) => (
+                            
                             <div className={styles.bk_sub_user} key={index}>
-                                  
+                                
                                 <BookingCard
+                                
+                                trainName={category.trainData?.name}
+                                trainNumber={category.trainData?.train_no}
+                                trainDepartureTime={category.trainData?.start_time}
+                                trainArrivalTime={category.trainData?.end_time}
+                                trainStartDestination={category.trainData?.start_destination}
+                                trainEndDestination={category.trainData?.end_destination}
                                  psgId={category.id}
                                 psgStatus={category.passengerStatus}
                                     psgName={category.passengerName}
@@ -144,6 +241,7 @@ const Dashboard = () =>{
                                     
                                 />
                             </div>
+                            
                         ))
                     ) : (
                         <p>Loading passenger data...</p>

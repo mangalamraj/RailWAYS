@@ -112,8 +112,8 @@ const TrainReservationForm = ({params:{train_no}}:Params) => {
       });
 
       if (response.ok) {
-        // Handle successful response (e.g., show a success message)
-        console.log('Booking successful!');
+        window.confirm('Tickets booked successfully');
+        history.back();
       } else {
         const errorData = await response.json(); // Parse the error response
         console.error('Booking failed:', errorData);
