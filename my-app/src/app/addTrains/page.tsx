@@ -1,9 +1,13 @@
 "use client";
 import './addtrains.css'
 
+
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
 
 const AddTrains = () => {
+  const router=useRouter();
   const [formData, setFormData] = useState({
     train_no: '',
     name: '',
@@ -74,6 +78,7 @@ const AddTrains = () => {
 
       const data = await response.json();
       console.log(data);
+      router.push('/admin');
     } catch (error) {
       console.error('Error occurred while registering:', error);
     }
