@@ -41,7 +41,8 @@ interface PassengerData {
     passengerSeat :  '14',
     passengerStatus:string,
     trainReservationId:number,
-    id:number
+    id:number,
+    trainData: TrainData
 }
 
 
@@ -83,7 +84,8 @@ const Dashboard = () =>{
     const username = pathname.split("/").pop();
     const [user,setUser] = useState<UserData | null>(null);
     const [bkingData,setbkingData] = useState<BookingData | null>(null);
-    const [traindata,settrainData] = useState<TrainData | null>(null);
+    const [trainData,settrainData] = useState<TrainData | null>(null);
+  
     const [passenger, setPassenger] = useState<PassengerData[]>([]);
     useEffect(()=>{
         const fetchdata=async()=>{
@@ -194,7 +196,7 @@ const Dashboard = () =>{
         fetchTrainData();
     }, [bkingData?.trainNo])
    
-console.log("This is train number - ", traindata?.name);
+
 
 
     return(
@@ -212,12 +214,21 @@ console.log("This is train number - ", traindata?.name);
                 </div>
                 <div>
                     <h2 className ={styles.bking_head}>Your Bookings - </h2>
-
+  
                     {passenger.length > 0 ? (
+                        
                         passenger.map((category, index) => (
+                            
                             <div className={styles.bk_sub_user} key={index}>
-                                  
+                                
                                 <BookingCard
+                                
+                                trainName={category.trainData?.name}
+                                trainNumber={category.trainData?.train_no}
+                                trainDepartureTime={category.trainData?.start_time}
+                                trainArrivalTime={category.trainData?.end_time}
+                                trainStartDestination={category.trainData?.start_destination}
+                                trainEndDestination={category.trainData?.end_destination}
                                  psgId={category.id}
                                 psgStatus={category.passengerStatus}
                                     psgName={category.passengerName}
@@ -230,6 +241,7 @@ console.log("This is train number - ", traindata?.name);
                                     
                                 />
                             </div>
+                            
                         ))
                     ) : (
                         <p>Loading passenger data...</p>
