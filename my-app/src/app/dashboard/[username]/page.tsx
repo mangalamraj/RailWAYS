@@ -223,8 +223,8 @@ const Dashboard = () =>{
                                 
                                 <BookingCard
                                 
-                                trainName={category.trainData?.name}
-                                trainNumber={category.trainData?.train_no}
+                                trainName="Sangmitra"
+                                trainNumber="11"
                                 trainDepartureTime={category.trainData?.start_time}
                                 trainArrivalTime={category.trainData?.end_time}
                                 trainStartDestination={category.trainData?.start_destination}

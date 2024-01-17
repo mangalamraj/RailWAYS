@@ -18,7 +18,7 @@ onCancel: () => void;
   }
 
 
-
+  
 
 
 
@@ -122,9 +122,7 @@ const BookingCard = (props:props) =>{
                             <div className={styles.passengername}>{props.psgSeat}</div>
                         </div>
                         </div>
-                       
-                    
-                
+                  
             </div>
         </div>
     )
