@@ -62,7 +62,7 @@ model Booking {
 model Passenger {
   id              Int      @id @default(autoincrement())
   passengerName   String
-  passengerPhone  Int
+  passengerPhone  String
   passengerAge    Int
   passengerClass  String
   passengerGender String

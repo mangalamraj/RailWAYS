@@ -1,86 +1,106 @@
 "use client";
-import './addtrains.css'
+import "./addtrains.css";
 
-
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const AddTrains = () => {
-  const router=useRouter();
+  const router = useRouter();
   const [formData, setFormData] = useState({
-    train_no: '',
-    name: '',
-    start_destination: '',
-    end_destination: '',
-    main_destination: '',
-    departure_date: '',
-    arrival_date: '',
-    start_time: '',
-    end_time: '',
-    quota:'normal',
-    seat_1a: '',
-    seat_2a: '',
-    seat_3a: '',
-    seat_sl: '',
-    seat_1a_price: '',
-    seat_2a_price: '',
-    seat_3a_price: '',
-    seat_sl_price: '',
-    seat_tatkal_1a: '',
-    seat_tatkal_2a: '',
-    seat_tatkal_3a: '',
-    seat_tatkal_sl: '',
-    seat_tatkal_1a_price: '',
-    seat_tatkal_2a_price: '',
-    seat_tatkal_3a_price: '',
-    seat_tatkal_sl_price: ''
+    train_no: "",
+    name: "",
+    start_destination: "",
+    end_destination: "",
+    main_destination: "",
+    departure_date: "",
+    arrival_date: "",
+    start_time: "",
+    end_time: "",
+    quota: "normal",
+    seat_1a: "",
+    seat_2a: "",
+    seat_3a: "",
+    seat_sl: "",
+    seat_1a_price: "",
+    seat_2a_price: "",
+    seat_3a_price: "",
+    seat_sl_price: "",
+    seat_tatkal_1a: "",
+    seat_tatkal_2a: "",
+    seat_tatkal_3a: "",
+    seat_tatkal_sl: "",
+    seat_tatkal_1a_price: "",
+    seat_tatkal_2a_price: "",
+    seat_tatkal_3a_price: "",
+    seat_tatkal_sl_price: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     let updatedValue: string | number | Date;
-  
- 
-     if (name === 'train_no'||name=== 'seat_1a'||name=== 'seat_2a'||name=== 'seat_3a'||name=== 'seat_sl'||name=== 'seat_tatkal_1a'||name=== 'seat_tatkal_2a'||name=== 'seat_tatkal_3a'||name=== 'seat_tatkal_sl'||name=== 'seat_1a_price'||name=== 'seat_2a_price'||name=== 'seat_3a_price'||name=== 'seat_sl_price'||name=== 'seat_tatkal_1a_price'||name=== 'seat_tatkal_2a_price'||name=== 'seat_tatkal_3a_price'||name=== 'seat_tatkal_sl_price') {
-      updatedValue = parseInt(value, 10);
+    function isNumeric(value: any) {
+      if (isNaN(value)) {
+        return false;
+      }
+      var x = parseFloat(value);
+      return (x | 0) === x;
     }
-     else {
+    if (
+      name === "train_no" ||
+      name === "seat_1a" ||
+      name === "seat_2a" ||
+      name === "seat_3a" ||
+      name === "seat_sl" ||
+      name === "seat_tatkal_1a" ||
+      name === "seat_tatkal_2a" ||
+      name === "seat_tatkal_3a" ||
+      name === "seat_tatkal_sl" ||
+      name === "seat_1a_price" ||
+      name === "seat_2a_price" ||
+      name === "seat_3a_price" ||
+      name === "seat_sl_price" ||
+      name === "seat_tatkal_1a_price" ||
+      name === "seat_tatkal_2a_price" ||
+      name === "seat_tatkal_3a_price" ||
+      name === "seat_tatkal_sl_price"
+    ) {
+      if (isNumeric(value)) {
+        updatedValue = parseInt(value);
+      }
+    } else {
       updatedValue = value;
     }
-  
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: updatedValue,
     }));
   };
-  
-  
-  
-  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const dateOfDeparture = new Date(formData.departure_date).toISOString();
       const dateOfArrival = new Date(formData.arrival_date).toISOString();
-      const stDest= formData.start_destination;
+      const stDest = formData.start_destination;
       const edDest = formData.end_destination;
-      const response = await fetch('api/gettrains', {
-        method: 'POST',
+      const response = await fetch("api/gettrains", {
+        method: "POST",
         body: JSON.stringify({
           ...formData,
           departure_date: dateOfDeparture,
           arrival_date: dateOfArrival,
-          main_destination:(stDest+edDest).toLowerCase()
+          main_destination: (stDest + edDest).toLowerCase(),
         }),
       });
 
       const data = await response.json();
       console.log(data);
-      router.push('/admin');
+      router.push("/admin");
     } catch (error) {
-      console.error('Error occurred while registering:', error);
+      console.error("Error occurred while registering:", error);
     }
   };
 
@@ -156,30 +176,28 @@ const AddTrains = () => {
           />
         </div>
         <div className="form-group">
-  <label htmlFor="start_time">Start Time (HH:mm):</label>
-  <input
-    type="text"
-    id="start_time"
-    name="start_time"
-    value={formData.start_time}
-    onChange={handleChange}
-   
-    required
-  />
-</div>
+          <label htmlFor="start_time">Start Time (HH:mm):</label>
+          <input
+            type="text"
+            id="start_time"
+            name="start_time"
+            value={formData.start_time}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-<div className="form-group">
-  <label htmlFor="end_time">End Time (HH:mm):</label>
-  <input
-    type="text"
-    id="end_time"
-    name="end_time"
-    value={formData.end_time}
-    onChange={handleChange}
- 
-    required
-  />
-</div>
+        <div className="form-group">
+          <label htmlFor="end_time">End Time (HH:mm):</label>
+          <input
+            type="text"
+            id="end_time"
+            name="end_time"
+            value={formData.end_time}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="seat_1a"> Seat 1A : </label>
           <input
