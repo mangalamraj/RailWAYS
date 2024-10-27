@@ -1,33 +1,28 @@
-import prisma from '../../../lib/connect';
-import { NextRequest, NextResponse } from "next/server"
+import prisma from "../../../lib/connect";
+import { NextRequest, NextResponse } from "next/server";
 
+export const GET = async (req: NextRequest) => {
+  const { searchParams } = await new URL(req.url);
+  const phonenumber = searchParams.get("passengerPhone");
 
-export const GET = async (req:NextRequest) => {
-  
-    const { searchParams } = await new URL(req.url);
-    const username = searchParams.get("passengerPhone")
-   
-    
-    try {
-        if (!username) {
+  try {
+    if (!phonenumber) {
+      return new NextResponse(
+        JSON.stringify({ message: "Passenger phone no is required" }),
+        { status: 400 }
+      );
+    }
+    const passNo = phonenumber;
 
-          return new NextResponse(
-            JSON.stringify({ message: 'Passenger phone no is required' }),
-            { status: 400 }
-          );
-        }
-        const passNo = parseInt(username, 10);
- 
-        const userData = await prisma.passenger.findMany({
-          where: {
-            passengerPhone: passNo,
-          },
-        });
+    const userData = await prisma.passenger.findMany({
+      where: {
+        passengerPhone: passNo,
+      },
+    });
 
     if (!userData) {
-
       return new NextResponse(
-        JSON.stringify({ message: 'Passenger phone not found',username }),
+        JSON.stringify({ message: "Passenger phone not found", phonenumber }),
         { status: 404 }
       );
     }
@@ -36,7 +31,7 @@ export const GET = async (req:NextRequest) => {
   } catch (error) {
     console.error(error);
     return new NextResponse(
-      JSON.stringify({ message: 'Something went wrong' }),
+      JSON.stringify({ message: "Something went wrong" }),
       { status: 500 }
     );
   }

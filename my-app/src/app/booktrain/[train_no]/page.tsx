@@ -35,7 +35,6 @@ const TrainReservationForm = ({ params: { train_no } }: Params) => {
         console.error("Error fetching data: ", error);
       }
     };
-
     fetchData();
   }, [train_no]);
 
